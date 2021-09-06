@@ -1,7 +1,7 @@
 from melusine.prepare_email.mail_segmenting import split_message_to_sentences
 from melusine.utils.multiprocessing import apply_by_multiprocessing
 from melusine.nlp_tools.tokenizer import Tokenizer
-from melusine.config.config import config
+from melusine import config
 
 
 class Streamer:

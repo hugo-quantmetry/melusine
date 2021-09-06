@@ -12,7 +12,7 @@ from tensorflow.keras.callbacks import TensorBoard
 from transformers import CamembertTokenizer, XLMTokenizer
 from transformers import TFCamembertModel, TFFlaubertModel
 
-from melusine.config.config import config
+from melusine import config
 from melusine.nlp_tools.tokenizer import Tokenizer
 from melusine.models.attention_model import PositionalEncoding
 from melusine.models.attention_model import TransformerEncoderLayer

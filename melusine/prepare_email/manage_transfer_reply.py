@@ -1,5 +1,5 @@
 import re
-from melusine.config.config import config
+from melusine import config
 
 
 regex_transfer_header = config["regex"]["manage_transfer_reply"]["transfer_header"]

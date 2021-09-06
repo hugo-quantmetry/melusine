@@ -4,7 +4,7 @@ import gensim
 import pickle
 import re
 from melusine.utils.streamer import Streamer
-from melusine.config.config import config
+from melusine import config
 
 
 _common_terms = config["words_list"]["stopwords"] + config["words_list"]["names"]

@@ -5,7 +5,7 @@ Cleaning of the body and the header
 import unidecode
 import unicodedata
 import re
-from melusine.config.config import config
+from melusine import config
 
 REGEX_CLEAN = config["regex"]["cleaning"]
 regex_flags_dict = REGEX_CLEAN["flags_dict"]

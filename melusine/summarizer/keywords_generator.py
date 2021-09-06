@@ -6,7 +6,7 @@ from collections import Counter
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.feature_extraction.text import TfidfVectorizer
 from melusine.utils.transformer_scheduler import TransformerScheduler
-from melusine.config.config import config
+from melusine import config
 
 
 keywords = config["words_list"]["keywords"]

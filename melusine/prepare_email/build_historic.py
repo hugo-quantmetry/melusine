@@ -1,6 +1,6 @@
 import re
 
-from melusine.config.config import config
+from melusine import config
 
 regex_transition_list = config["regex"]["build_historic"]["transition_list"]
 

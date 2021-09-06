@@ -1,5 +1,5 @@
 import re
-from melusine.config.config import config
+from melusine import config
 from melusine.prepare_email.cleaning import remove_accents
 
 

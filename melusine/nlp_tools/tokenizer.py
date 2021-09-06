@@ -3,7 +3,7 @@ import re
 from flashtext import KeywordProcessor
 from sklearn.base import BaseEstimator, TransformerMixin
 from melusine.utils.transformer_scheduler import TransformerScheduler
-from melusine.config.config import config
+from melusine import config
 
 stopwords = config["words_list"]["stopwords"]
 names_list = config["words_list"]["names"]
