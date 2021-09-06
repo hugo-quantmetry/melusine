@@ -22,6 +22,7 @@ requirements = [
     "h5py==2.10.0",
     "numpy>=1.16.4,<1.19.0",
     "joblib>=1.0",
+    "PyYAML>=4.2",
 ]
 
 setup_requirements = [
