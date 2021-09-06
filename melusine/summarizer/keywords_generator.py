@@ -6,10 +6,8 @@ from collections import Counter
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.feature_extraction.text import TfidfVectorizer
 from melusine.utils.transformer_scheduler import TransformerScheduler
-from melusine.config.config import ConfigJsonReader
+from melusine.config.config import config
 
-conf_reader = ConfigJsonReader()
-config = conf_reader.get_config_file()
 
 keywords = config["words_list"]["keywords"]
 stopwords = config["words_list"]["stopwords"] + config["words_list"]["names"]

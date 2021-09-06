@@ -12,14 +12,12 @@ from tensorflow.keras.callbacks import TensorBoard
 from transformers import CamembertTokenizer, XLMTokenizer
 from transformers import TFCamembertModel, TFFlaubertModel
 
-from melusine.config.config import ConfigJsonReader
+from melusine.config.config import config
 from melusine.nlp_tools.tokenizer import Tokenizer
 from melusine.models.attention_model import PositionalEncoding
 from melusine.models.attention_model import TransformerEncoderLayer
 from melusine.models.attention_model import MultiHeadAttention
 
-conf_reader = ConfigJsonReader()
-config = conf_reader.get_config_file()
 tensorboard_callback_parameters = config["tensorboard_callback"]
 
 
@@ -388,9 +386,7 @@ class NeuralModel(BaseEstimator, ClassifierMixin):
         embedding_matrix = np.zeros((vocab_size + 2, vector_dim))
         for index, word in enumerate(self.vocabulary):
             if word not in ["PAD", "UNK"]:
-                embedding_matrix[
-                    index + 2, :
-                ] = pretrained_embedding.embedding[word]
+                embedding_matrix[index + 2, :] = pretrained_embedding.embedding[word]
         embedding_matrix[1, :] = np.mean(embedding_matrix, axis=0)
 
         self.vocabulary.insert(0, "PAD")
