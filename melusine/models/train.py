@@ -9,8 +9,6 @@ from tensorflow.keras.models import model_from_json
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import TensorBoard
-from transformers import CamembertTokenizer, XLMTokenizer
-from transformers import TFCamembertModel, TFFlaubertModel
 
 from melusine import config
 from melusine.nlp_tools.tokenizer import Tokenizer
@@ -126,9 +124,27 @@ class NeuralModel(BaseEstimator, ClassifierMixin):
         if self.architecture_function.__name__ != "bert_model":
             self.tokenizer = Tokenizer(input_column=text_input_column)
         elif "camembert" in bert_tokenizer.lower():
-            self.tokenizer = CamembertTokenizer.from_pretrained(bert_tokenizer)
+            # Prevent the HuggingFace dependency
+            try:
+                from transformers import CamembertTokenizer
+
+                self.tokenizer = CamembertTokenizer.from_pretrained(bert_tokenizer)
+            except ModuleNotFoundError:
+                raise (
+                    """Please install transformers 3.4.0 (only version currently supported)
+                    pip install melusine[transformers]"""
+                )
         elif "flaubert" in bert_tokenizer.lower():
-            self.tokenizer = XLMTokenizer.from_pretrained(bert_tokenizer)
+            # Prevent the HuggingFace dependency
+            try:
+                from transformers import XLMTokenizer
+
+                self.tokenizer = XLMTokenizer.from_pretrained(bert_tokenizer)
+            except ModuleNotFoundError:
+                raise (
+                    """Please install transformers 3.4.0 (only version currently supported)
+                    pip install melusine[transformers]"""
+                )
         else:
             raise NotImplementedError(
                 "Bert tokenizer {} not implemented".format(bert_tokenizer)
