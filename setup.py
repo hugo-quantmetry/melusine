@@ -19,6 +19,7 @@ requirements = [
     "h5py>=3.0",
     "joblib>=1.0",
     "PyYAML>=4.2",
+    "oldest-supported-numpy",
 ]
 
 # Optional dependencies
