@@ -1,16 +1,24 @@
-"""Top-level package for melusine."""
+"""Top-level package."""
 
-__author__ = """Sacha Samama & Tom Stringer & Hugo Perrier"""
-__email__ = ["tiphaine.fabre@maif.fr", "hperrier@quantmetry.com"]
-__version__ = "2.3.1"
+import logging
 
-from .data.data_loader import load_email_data
-from .config.config import config
+from melusine._config import config
+from melusine.base import MelusineDetector, MelusineRegex, MelusineRegexFullMatch, MelusineTransformer
+from melusine.pipeline import MelusinePipeline
 
 __all__ = [
-    "__author__",
-    "__email__",
-    "__version__",
-    "load_email_data",
     "config",
+    "MelusineDetector",
+    "MelusineRegex",
+    "MelusineRegexFullMatch",
+    "MelusineTransformer",
+    "MelusinePipeline",
 ]
+
+VERSION = (3, 4, 0)
+__version__ = ".".join(map(str, VERSION))
+
+# ------------------------------- #
+#             LOGGING
+# ------------------------------- #
+logging.getLogger(__name__).addHandler(logging.NullHandler())
